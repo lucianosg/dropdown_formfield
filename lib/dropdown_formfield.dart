@@ -1,5 +1,7 @@
 library dropdown_formfield;
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class DropDownFormField extends FormField<dynamic> {
@@ -13,6 +15,7 @@ class DropDownFormField extends FormField<dynamic> {
   final String valueField;
   final Function onChanged;
   final bool filled;
+  final double fieldRadius;
   final EdgeInsets contentPadding;
   final Color backgroundColor;
   final Color hintTextColor;
@@ -35,6 +38,7 @@ class DropDownFormField extends FormField<dynamic> {
       this.valueField,
       this.onChanged,
       this.filled = true,
+      this.fieldRadius = 0.0,
       this.backgroundColor = Colors.white,
       this.hintTextColor = Colors.black,
       this.titleTextColor = Colors.grey,
@@ -49,7 +53,12 @@ class DropDownFormField extends FormField<dynamic> {
           initialValue: value == '' ? null : value,
           builder: (FormFieldState<dynamic> state) {
             return Container(
-              color: backgroundColor,
+              decoration: (fieldRadius == 0.0)
+                  ? BoxDecoration(color: backgroundColor)
+                  : BoxDecoration(
+                      color: backgroundColor,
+                      borderRadius: BorderRadius.circular(fieldRadius),
+                    ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
