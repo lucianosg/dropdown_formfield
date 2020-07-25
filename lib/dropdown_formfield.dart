@@ -15,6 +15,8 @@ class DropDownFormField extends FormField<dynamic> {
   final String valueField;
   final Function onChanged;
   final bool filled;
+  final bool fieldExpand;
+  final bool listExpand;
   final double fieldRadius;
   final double hintFontSize;
   final double titleFontSize;
@@ -41,6 +43,8 @@ class DropDownFormField extends FormField<dynamic> {
       this.valueField,
       this.onChanged,
       this.filled = true,
+      this.fieldExpand = true,
+      this.listExpand = true,
       this.fieldRadius = 0.0,
       this.hintFontSize = 12.0,
       this.titleFontSize = 16.0,
@@ -69,6 +73,7 @@ class DropDownFormField extends FormField<dynamic> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   InputDecorator(
+                    expands: fieldExpand,
                     decoration: InputDecoration(
                       contentPadding: contentPadding,
                       labelText: titleText,
@@ -82,6 +87,7 @@ class DropDownFormField extends FormField<dynamic> {
                       child: DropdownButton<dynamic>(
                         dropdownColor: listBackgroundColor,
                         iconEnabledColor: iconColor,
+                        isExpanded: listExpand,
                         hint: Text(
                           hintText,
                           style: TextStyle(
