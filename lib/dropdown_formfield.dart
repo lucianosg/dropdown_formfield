@@ -16,6 +16,9 @@ class DropDownFormField extends FormField<dynamic> {
   final Function onChanged;
   final bool filled;
   final double fieldRadius;
+  final double hintFontSize;
+  final double titleFontSize;
+  final double textFontSize;
   final EdgeInsets contentPadding;
   final Color backgroundColor;
   final Color hintTextColor;
@@ -39,6 +42,9 @@ class DropDownFormField extends FormField<dynamic> {
       this.onChanged,
       this.filled = true,
       this.fieldRadius = 0.0,
+      this.hintFontSize = 12.0,
+      this.titleFontSize = 16.0,
+      this.textFontSize = 16.0,
       this.backgroundColor = Colors.white,
       this.hintTextColor = Colors.black,
       this.titleTextColor = Colors.grey,
@@ -67,7 +73,10 @@ class DropDownFormField extends FormField<dynamic> {
                       contentPadding: contentPadding,
                       labelText: titleText,
                       filled: filled,
-                      labelStyle: TextStyle(color: titleTextColor),
+                      labelStyle: TextStyle(
+                        color: titleTextColor,
+                        fontSize: titleFontSize,
+                      ),
                     ),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<dynamic>(
@@ -75,7 +84,10 @@ class DropDownFormField extends FormField<dynamic> {
                         iconEnabledColor: iconColor,
                         hint: Text(
                           hintText,
-                          style: TextStyle(color: hintTextColor),
+                          style: TextStyle(
+                            color: hintTextColor,
+                            fontSize: hintFontSize,
+                          ),
                         ),
                         value: value == '' ? null : value,
                         onChanged: (dynamic newValue) {
@@ -87,7 +99,10 @@ class DropDownFormField extends FormField<dynamic> {
                             value: item[valueField],
                             child: Text(
                               item[textField],
-                              style: TextStyle(color: textColor),
+                              style: TextStyle(
+                                color: textColor,
+                                fontSize: textFontSize,
+                              ),
                             ),
                           );
                         }).toList(),
