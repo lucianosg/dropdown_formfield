@@ -19,6 +19,7 @@ class DropDownFormField extends FormField<dynamic> {
   final Color titleTextColor;
   final Color textColor;
   final Color iconColor;
+  final Color listBackgroundColor;
 
   DropDownFormField(
       {FormFieldSetter<dynamic> onSaved,
@@ -35,10 +36,11 @@ class DropDownFormField extends FormField<dynamic> {
       this.onChanged,
       this.filled = true,
       this.backgroundColor = Colors.white,
-      this.hintTextColor = Colors.grey,
-      this.titleTextColor = Colors.black,
+      this.hintTextColor = Colors.black,
+      this.titleTextColor = Colors.grey,
       this.textColor = Colors.black,
       this.iconColor = Colors.black,
+      this.listBackgroundColor = Colors.white,
       this.contentPadding = const EdgeInsets.fromLTRB(12, 12, 8, 0)})
       : super(
           onSaved: onSaved,
@@ -60,6 +62,7 @@ class DropDownFormField extends FormField<dynamic> {
                     ),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<dynamic>(
+                        dropdownColor: listBackgroundColor,
                         iconEnabledColor: iconColor,
                         hint: Text(
                           hintText,
