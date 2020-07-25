@@ -17,6 +17,7 @@ class DropDownFormField extends FormField<dynamic> {
   final Color backgroundColor;
   final Color hintTextColor;
   final Color titleTextColor;
+  final Color textColor;
   final Color iconColor;
 
   DropDownFormField(
@@ -36,6 +37,7 @@ class DropDownFormField extends FormField<dynamic> {
       this.backgroundColor = Colors.white,
       this.hintTextColor = Colors.grey,
       this.titleTextColor = Colors.black,
+      this.textColor = Colors.black,
       this.iconColor = Colors.black,
       this.contentPadding = const EdgeInsets.fromLTRB(12, 12, 8, 0)})
       : super(
@@ -45,6 +47,7 @@ class DropDownFormField extends FormField<dynamic> {
           initialValue: value == '' ? null : value,
           builder: (FormFieldState<dynamic> state) {
             return Container(
+              color: backgroundColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -53,13 +56,14 @@ class DropDownFormField extends FormField<dynamic> {
                       contentPadding: contentPadding,
                       labelText: titleText,
                       filled: filled,
+                      labelStyle: TextStyle(color: titleTextColor),
                     ),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<dynamic>(
                         iconEnabledColor: iconColor,
                         hint: Text(
                           hintText,
-                          style: TextStyle(color: Colors.grey.shade500),
+                          style: TextStyle(color: hintTextColor),
                         ),
                         value: value == '' ? null : value,
                         onChanged: (dynamic newValue) {
@@ -69,7 +73,10 @@ class DropDownFormField extends FormField<dynamic> {
                         items: dataSource.map((item) {
                           return DropdownMenuItem<dynamic>(
                             value: item[valueField],
-                            child: Text(item[textField]),
+                            child: Text(
+                              item[textField],
+                              style: TextStyle(color: textColor),
+                            ),
                           );
                         }).toList(),
                       ),
