@@ -48,6 +48,7 @@ class DropDownFormField extends FormField<dynamic> {
                     ),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<dynamic>(
+                        iconEnabledColor: Colors.blue,
                         hint: Text(
                           hintText,
                           style: TextStyle(color: Colors.grey.shade500),
@@ -69,7 +70,9 @@ class DropDownFormField extends FormField<dynamic> {
                   SizedBox(height: state.hasError ? 5.0 : 0.0),
                   Text(
                     state.hasError ? state.errorText : '',
-                    style: TextStyle(color: Colors.redAccent.shade700, fontSize: state.hasError ? 12.0 : 0.0),
+                    style: TextStyle(
+                        color: Colors.redAccent.shade700,
+                        fontSize: state.hasError ? 12.0 : 0.0),
                   ),
                 ],
               ),
