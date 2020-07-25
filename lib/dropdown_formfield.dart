@@ -27,6 +27,7 @@ class DropDownFormField extends FormField<dynamic> {
   final Color titleTextColor;
   final Color textColor;
   final Color iconColor;
+  final double iconButtonSize;
   final Color listBackgroundColor;
 
   DropDownFormField(
@@ -49,6 +50,7 @@ class DropDownFormField extends FormField<dynamic> {
       this.hintFontSize = 12.0,
       this.titleFontSize = 16.0,
       this.textFontSize = 16.0,
+      this.iconButtonSize = 32.0,
       this.backgroundColor = Colors.white,
       this.hintTextColor = Colors.black,
       this.titleTextColor = Colors.grey,
@@ -87,6 +89,7 @@ class DropDownFormField extends FormField<dynamic> {
                       child: DropdownButton<dynamic>(
                         dropdownColor: listBackgroundColor,
                         iconEnabledColor: iconColor,
+                        iconSize: iconButtonSize,
                         isExpanded: listExpand,
                         hint: Text(
                           hintText,
